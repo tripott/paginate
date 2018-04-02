@@ -1,0 +1,2 @@
+export const SET_SONGS = 'SET_SONGS'
+export const SET_SONGS_LOAD_STATUS = 'SET_SONGS_LOAD_STATUS'
