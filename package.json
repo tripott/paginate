@@ -1,0 +1,26 @@
+{
+  "name": "paginate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "node-http-error": "^2.0.0",
+    "nodemon": "^1.17.2",
+    "pouchdb-adapter-http": "^6.4.3",
+    "pouchdb-core": "^6.4.3",
+    "pouchdb-find": "^6.4.3",
+    "ramda": "^0.25.0",
+    "slugify": "^1.2.9"
+  }
+}
