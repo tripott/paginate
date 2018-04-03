@@ -1,15 +1,16 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
-import { songs, songListState } from './reducers/songs'
+import { songs, songLoadStatus, prevStartKey } from './reducers/songs'
 import thunk from 'redux-thunk'
 
 const store = createStore(
   combineReducers({
     songs,
-    songListState
+    songLoadStatus,
+    prevStartKey
   }),
   applyMiddleware(thunk)
 )
-store.subscribe(() => {
-  console.log('store.getState()', store.getState())
-})
+// store.subscribe(() => {
+//   console.log('store.getState()', store.getState())
+// })
 export default store

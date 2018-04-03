@@ -1,5 +1,9 @@
 import fetch from 'isomorphic-fetch'
-import { SET_SONGS, SET_SONGS_LOAD_STATUS } from '../../constants'
+import {
+  SET_SONGS,
+  SET_SONGS_LOAD_STATUS,
+  SET_PREVIOUS_START_KEY
+} from '../../constants'
 const url = 'http://localhost:5000'
 
 export const getSongs = (limit = 5, startkey) => async (dispatch, getState) => {
@@ -10,4 +14,12 @@ export const getSongs = (limit = 5, startkey) => async (dispatch, getState) => {
   const songs = await fetch(songsURL).then(res => res.json())
   dispatch({ type: SET_SONGS, payload: songs })
   dispatch({ type: SET_SONGS_LOAD_STATUS, payload: 'ready' })
+}
+
+export const navNext = (history, limit, startkey, nextStartKey) => (
+  dispatch,
+  getState
+) => {
+  history.push(`/?limit=${limit}&startkey=${nextStartKey}`)
+  history.go()
 }
