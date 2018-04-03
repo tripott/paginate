@@ -1,12 +1,18 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
-import { songs, songLoadStatus, prevStartKey } from './reducers/songs'
+import {
+  songs,
+  songLoadStatus,
+  songPageCounter,
+  pageHistory
+} from './reducers/songs'
 import thunk from 'redux-thunk'
 
 const store = createStore(
   combineReducers({
     songs,
     songLoadStatus,
-    prevStartKey
+    songPageCounter,
+    pageHistory
   }),
   applyMiddleware(thunk)
 )

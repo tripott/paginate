@@ -1,15 +1,15 @@
 import React from 'react'
-import Button from 'material-ui/Button'
+// import Button from 'material-ui/Button'
 import Icon from 'material-ui/Icon'
 import IconButton from 'material-ui/IconButton'
-import { Link } from 'react-router-dom'
-import { prop } from 'ramda'
+// import { Link } from 'react-router-dom'
+import { prop, propOr } from 'ramda'
 
 const PageNav = props => {
-  const goBack = props.history.goBack
-  const goForward = props.history.goForward
+  // const goBack = props.history.goBack
+  // const goForward = props.history.goForward
   const push = props.history.push
-  const replace = props.history.replace
+  // const replace = props.history.replace
   const go = props.history.go
 
   const startKey = props.startkey
@@ -23,12 +23,12 @@ const PageNav = props => {
   console.log('PageNav lastPageItemStartKey', lastPageItemStartKey)
 
   const limit = props.limit
-  //http://localhost:3000/?limit=3&startkey=song_fisher-man-dub
+  // http://localhost:3000/?limit=3&startkey=song_fisher-man-dub
   return (
     <div>
       <IconButton
         onClick={e => {
-          push(`\?limit=${limit}${prevStartKeyQuery}`)
+          push(`/?limit=${limit}${prevStartKeyQuery}`)
         }}
         disabled={startKey ? false : true}
         color="secondary"
@@ -39,7 +39,7 @@ const PageNav = props => {
 
       <IconButton
         onClick={e => {
-          push(`\?startkey=${lastPageItemStartKey}&limit=${limit}`)
+          push(`/?startkey=${lastPageItemStartKey}&limit=${limit}`)
           go()
         }}
         color="secondary"
