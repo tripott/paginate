@@ -22,11 +22,3 @@ export const getSongs = (limit = 3, startkey, page) => async (
   dispatch({ type: SET_SONGS, payload: { currentPage: page, data: songs } })
   dispatch({ type: SET_SONGS_LOAD_STATUS, payload: 'ready' })
 }
-
-// export const navNext = (history, limit, startkey, nextStartKey) => (
-//   dispatch,
-//   getState
-// ) => {
-//   history.push(`/?limit=${limit}&startkey=${nextStartKey}`)
-//   history.go()
-// }
