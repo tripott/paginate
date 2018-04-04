@@ -13,8 +13,8 @@ import {
 
 class Songs extends React.Component {
   componentDidMount() {
-    const search = this.props.location.search
-    const params = new URLSearchParams(search)
+    //use limit from the app url to state your page size
+    const params = new URLSearchParams(this.props.location.search)
     const limit = params.get('limit') || 3
 
     if (this.props.page === 1) {
@@ -24,6 +24,7 @@ class Songs extends React.Component {
   }
   render() {
     const { songs, page, navPrev, navNext, pageHistory } = this.props
+    //use limit from the app url to state your page size
     const params = new URLSearchParams(this.props.location.search)
     const limit = params.get('limit') || 3
 

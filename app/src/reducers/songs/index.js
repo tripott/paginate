@@ -3,16 +3,14 @@ import {
   SET_SONGS_LOAD_STATUS,
   INCREMENT_SONG_PAGE_COUNTER,
   DECREMENT_SONG_PAGE_COUNTER
-  // SET_PREVIOUS_START_KEY
-  // ADD_SONG_NAV_HISTORY
 } from '../../constants'
 import { last, map, merge, prop, append, find } from 'ramda'
 
-/*
-{
-  type: SET_SONGS,
-  payload: {currentPage: 2, data: [ ...array of songs...]}
-}
+/* sample action
+  {
+    type: SET_SONGS,
+    payload: {currentPage: 2, data: [ ...array of songs...]}
+  }
 */
 
 export const songs = (state = [], action) => {
@@ -35,10 +33,12 @@ export const songLoadStatus = (state = 'loading', action) => {
 
 const initialState = [{ page: 1, current: null, next: null }]
 
-/* {
-  type: SET_SONGS,
-  payload: {currentPage: 2, data: [ ...array of songs...]}
-} */
+/* sample action
+  {
+    type: SET_SONGS,
+    payload: {currentPage: 2, data: [ ...array of songs...]}
+  }
+*/
 
 export const pageHistory = (state = initialState, action) => {
   switch (action.type) {
@@ -51,13 +51,22 @@ export const pageHistory = (state = initialState, action) => {
               : page,
           state
         )
-
+        console.log('First page state:', newState)
+        /* sample returned newstate
+        [
+          {page: 1, current: null, next: "song_fisher-man-dub"}
+        ]
+        */
         return newState
       } else if (action.payload.currentPage > 1) {
         // see if the page is already in pageHistory
         // if we alredy have the current page in state
-        //   then there is noting to do
+        //   then there is noting to do.  return existing state.
         if (find(page => page.page === action.payload.currentPage, state)) {
+          console.log(
+            'Page already in pageHistory.  No changes to state:',
+            state
+          )
           return state
         }
 
@@ -76,6 +85,21 @@ export const pageHistory = (state = initialState, action) => {
             },
             state
           )
+          console.log('Additional pages state:', newState)
+          /* sample returned newstate for second page.
+          [
+            {page: 1, current: null, next: "song_fisher-man-dub"},
+            {page: 2, current: "song_fisher-man-dub", next: "song_let-down"}
+          ]
+          */
+
+          /* sample returned newstate for third page.
+          [
+            {page: 1, current: null, next: "song_fisher-man-dub"},
+            {page: 2, current: "song_fisher-man-dub", next: "song_let-down"},
+            {page: 3, current: "song_let-down", next: "song_sweet-and-dandy"}
+          ]
+          */
           return newState
         }
       } else {
@@ -87,10 +111,6 @@ export const pageHistory = (state = initialState, action) => {
   }
 }
 
-/*
-{type: INCREMENT_SONG_PAGE_COUNTER}
-{type: DECREMENT_SONG_PAGE_COUNTER}
-*/
 export const songPageCounter = (state = 1, action) => {
   switch (action.type) {
     case INCREMENT_SONG_PAGE_COUNTER:
@@ -101,31 +121,3 @@ export const songPageCounter = (state = 1, action) => {
       return state
   }
 }
-
-//
-// export const prevStartKey = (state = null, action) => {
-//   switch (action.type) {
-//     case SET_SONGS:
-//       console.log('REDUCER prevStartKey', action.payload)
-//       return propOr(null, '_id', last(action.payload))
-//     default:
-//       return state
-//   }
-// }
-
-// export const songPageNavHistory = (
-//   state = [
-//     {
-//       prevStartKey: undefined,
-//       nextStartKey: undefined
-//     }
-//   ],
-//   action
-// ) => {
-//   switch (action.type) {
-//     case ADD_SONG_NAV_HISTORY:
-//       return concat(state, action.payload)
-//     default:
-//       return state
-//   }
-// }
