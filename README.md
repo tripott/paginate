@@ -187,7 +187,7 @@ Create a couchdb database and note the url to the couch server and database.
      ]
     ```
 
-- `GET` the third page of 3 songs using `limit` and the `startkey` of the last document in the second page  [http://localhost:5000/songs?limit=3&startkey=song_fisher-man-dub](http://localhost:5000/songs?limit=3&startkey=song_fisher-man-dub)
+- `GET` the third page of 3 songs using `limit` and the `startkey` of the last document in the second page  [http://localhost:5000/songs?limit=3&startkey=song_let-down](http://localhost:5000/songs?limit=3&startkey=song_let-down)
 
   ```json
   [
