@@ -43,11 +43,7 @@ const initialState = [{ page: 1, current: null, next: null }]
 export const pageHistory = (state = initialState, action) => {
   switch (action.type) {
     case SET_SONGS:
-      console.log('pageHistory reducer SET_SONGS')
-      console.log('pageHistory state', state)
-      console.log('pageHistory action.payload', action.payload)
       if (action.payload.currentPage === 1) {
-        console.log('1 pageHistory currentPage', action.payload.currentPage)
         const newState = map(
           page =>
             page.page === 1
@@ -55,17 +51,20 @@ export const pageHistory = (state = initialState, action) => {
               : page,
           state
         )
-        console.log('pageHistory new state', newState)
+
         return newState
       } else if (action.payload.currentPage > 1) {
-        console.log('> 1 pageHistory currentPage', action.payload.currentPage)
         // see if the page is already in pageHistory
-        //page => page.page === action.payload.currentPage - 1,
+        // if we alredy have the current page in state
+        //   then there is noting to do
+        if (find(page => page.page === action.payload.currentPage, state)) {
+          return state
+        }
+
         const previousHistoryPage = find(
           page => page.page === action.payload.currentPage - 1,
           state
         )
-        console.log('> 1 previousHistoryPage', previousHistoryPage)
 
         // get the previous page's next value and use for the current page value
         if (previousHistoryPage) {
@@ -77,7 +76,6 @@ export const pageHistory = (state = initialState, action) => {
             },
             state
           )
-          console.log('> 1 newState', newState)
           return newState
         }
       } else {

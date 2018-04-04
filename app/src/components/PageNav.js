@@ -1,22 +1,19 @@
 import React from 'react'
 import Icon from 'material-ui/Icon'
 import IconButton from 'material-ui/IconButton'
+import Button from 'material-ui/Button'
 
 const PageNav = props => {
-  // const { currentUrlStartKey, nextStartKey, navPrev, navNext } = props
-  const { page, pageCount, navPrev, navNext } = props
+  const { page, pageCount, navPrev, navNext, limit } = props
   const prevDisabled = page === 1 ? true : false
-  const nextDisabled = pageCount === 0 ? true : false
-
-  // const prevDisabled = currentUrlStartKey ? false : true
-  // const nextDisabled = nextStartKey ? false : true
-  // http://localhost:3000/?limit=3&startkey=song_fisher-man-dub
-  console.log('PageNav pageCount', pageCount)
-  console.log('PageNav nextDisabled', nextDisabled)
+  const nextDisabled = pageCount < limit ? true : false
 
   return (
     <div>
       <IconButton
+        style={{
+          margin: '20px'
+        }}
         onClick={navPrev}
         disabled={prevDisabled}
         color="secondary"
@@ -24,8 +21,11 @@ const PageNav = props => {
       >
         <Icon>navigate_before</Icon>
       </IconButton>
-
+      <Button>Page: {page}</Button>
       <IconButton
+        style={{
+          margin: '20px'
+        }}
         onClick={navNext}
         color="secondary"
         disabled={nextDisabled}
