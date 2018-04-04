@@ -10,9 +10,9 @@ const db = new PouchDB(`${process.env.DEMO1DBURL}`)
 //
 //////////////////////////////////////////////////////////////////
 
-const options = { startkey: 'doc05' }
+//const options = { startkey: 'doc05' }
 //const options = {endkey : 'doc15'}
-//const options = {startkey : 'doc05', endkey: 'doc15'}
+const options = { startkey: 'doc05', limit: 5 }
 
 // skip tells PouchDB how many documents to skip from its normal starting point.
 // E.g. {skip : 5} gives us:

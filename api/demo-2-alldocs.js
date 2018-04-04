@@ -9,7 +9,7 @@ const db = new PouchDB(`${process.env.DEMO1DBURL}`)
 //
 //////////////////////////////////////////////////////////////////
 
-const options = { startkey: 'doc05', endkey: 'doc06' }
+const options = { startkey: 'doc01', endkey: 'doc06' }
 
 db.allDocs(options, function(err, response) {
   if (err) {
