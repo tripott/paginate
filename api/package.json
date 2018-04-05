@@ -21,6 +21,7 @@
     "pouchdb-core": "^6.4.3",
     "pouchdb-find": "^6.4.3",
     "ramda": "^0.25.0",
-    "slugify": "^1.2.9"
+    "slugify": "^1.2.9",
+    "uuid": "^3.2.1"
   }
 }

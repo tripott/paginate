@@ -5,6 +5,8 @@ import {
   songPageCounter,
   pageHistory
 } from './reducers/songs'
+
+import { profile, profiles } from './reducers/profiles'
 import thunk from 'redux-thunk'
 
 const store = createStore(
@@ -12,7 +14,9 @@ const store = createStore(
     songs,
     songLoadStatus,
     songPageCounter,
-    pageHistory
+    pageHistory,
+    profile,
+    profiles
   }),
   applyMiddleware(thunk)
 )
